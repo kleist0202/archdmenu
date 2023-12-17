@@ -278,11 +278,13 @@ recalculatenumbers()
 {
 	unsigned int numer = 0, denom = 0;
 	struct item *item;
-	if (matchend) {
-		numer++;
-		for (item = matchend; item && item->left; item = item->left)
-			numer++;
-	}
+
+    numer++;
+	for (item = items; item && item->text; item++) {
+        if (sel == item)
+            break;
+        numer++;
+    }
 	for (item = items; item && item->text; item++)
 		denom++;
 	snprintf(numbers, NUMBERSBUFSIZE, "%d/%d", numer, denom);
@@ -643,10 +645,28 @@ keypress(XKeyEvent *ev)
 			return;
 		/* fallthrough */
 	case XK_Up:
-		if (sel && sel->left && (sel = sel->left)->right == curr) {
-			curr = prev;
-			calcoffsets();
+		if (text[cursor] != '\0') {
+			cursor = strlen(text);
+			break;
 		}
+        if (sel->left == NULL) {
+            if (next) {
+                /* jump to end of list and position items in reverse */
+                curr = matchend;
+                calcoffsets();
+                curr = prev;
+                calcoffsets();
+                while (next && (curr = curr->right))
+                    calcoffsets();
+            }
+            sel = matchend;
+        }
+        else {
+            if (sel && sel->left && (sel = sel->left)->right == curr) {
+                curr = prev;
+                calcoffsets();
+            }
+        }
 		break;
 	case XK_Next:
 		if (!next)
@@ -700,11 +720,21 @@ keypress(XKeyEvent *ev)
 			return;
 		/* fallthrough */
 	case XK_Down:
-		if (sel && sel->right && (sel = sel->right) == next) {
-			curr = next;
-			calcoffsets();
-		}
-		break;
+        if (sel->right == NULL) {
+            if (sel == matches) {
+                cursor = 0;
+                break;
+            }
+            sel = curr = matches;
+            calcoffsets();
+        }
+        else {
+            if (sel && sel->right && (sel = sel->right) == next) {
+                curr = next;
+                calcoffsets();
+            }
+        }
+        break;
 	case XK_Tab:
 		if (!sel)
 			return;
