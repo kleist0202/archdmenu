@@ -38,8 +38,9 @@ static const char *colors[SchemeLast][10] = {
     [SchemeBlue] = { schemebluefg, schemebluebg, schemebluebg },
     [SchemePurple] = {"#ffffff", "#9952e0", "#7439b0"},
 };
-/* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+/* -l and -g options; controls number of lines and columns in grid if > 0 */
 static unsigned int lines      = 0;
+static unsigned int columns    = 0;
 /* -h option; minimum height of a menu line */
 static unsigned int lineheight = 24;
 static unsigned int min_lineheight = 8;
