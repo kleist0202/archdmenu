@@ -60,15 +60,15 @@ ResourcePref resources[] = {
 	{ "color15", STRING, &normfgcolor },
 	{ "color0", STRING, &normbgcolor },
 	{ "color15",  STRING, &selfgcolor },
-	{ "color4",  STRING, &selbgcolor },
+	{ "color5",  STRING, &selbgcolor },
 	{ "color15",  STRING, &outfgcolor },
 	{ "color14",  STRING, &outbgcolor },
 	{ "foreground",  STRING, &hlfgcolor },
 	{ "background",  STRING, &hlbgcolor },
 	{ "foreground",  STRING, &schemehoverfg },
-	{ "color4",  STRING, &schemehoverbg },
+	{ "color5",  STRING, &schemehoverbg },
 	{ "foreground",  STRING, &schemebluefg },
-	{ "color5",  STRING, &schemebluebg },
+	{ "color13",  STRING, &schemebluebg },
 };
 
 /* Size of the window border */
