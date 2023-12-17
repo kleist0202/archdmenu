@@ -856,6 +856,7 @@ setup(void)
         mw = info[i].width;
         if (centered) {
         	mw = MIN(MAX(max_textw() + promptw, min_width), info[i].width);
+            mw = (dmw>0 ? dmw : mw);
         	x = info[i].x_org + ((info[i].width  - mw) / 2);
         	y = info[i].y_org + ((info[i].height - mh) / 2);
         } else {
