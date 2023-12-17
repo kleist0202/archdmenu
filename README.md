@@ -1,3 +1,6 @@
+# archdmenu
+My fork of dmenu [https://tools.suckless.org/dmenu]. It has implemented some of its plugins and some of my ideas.
+
 dmenu - dynamic menu
 ====================
 dmenu is an efficient dynamic menu for X.
