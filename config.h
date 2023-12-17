@@ -10,18 +10,32 @@ static const char *fonts[] = {
     "FiraCode Nerd Font:size=12"
 };
 
+static char normfgcolor[] = "#cccccc";
+static char normbgcolor[] = "#111111";
+static char selfgcolor[]  = "#eeeeee";
+static char selbgcolor[]  = "#112555";
+static char outfgcolor[]  = "#000000";
+static char outbgcolor[]  = "#00ffff";
+static char hlfgcolor[]  = "#f1fa8c";
+static char hlbgcolor[]  = "#3E485B";
+static char schemehoverfg[]  = "#ffffff";
+static char schemehoverbg[]  = "#112555";
+
+static char schemebluefg[]  = "#ffffff";
+static char schemebluebg[]  = "#5301e0";
+
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][10] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#cccccc", "#111111", "#111111"},
-	[SchemeSel] = { "#eeeeee", "#112555", "#112555"},
-	[SchemeOut] = { "#000000", "#00ffff", "#00ffff"},
-    [SchemeHighlight] = {"#f1fa8c", "#596377", "#3E485B"},
-    [SchemeHover] = {"#ffffff", "#112555", "#112555"},
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbgcolor },
+	[SchemeSel] = { selfgcolor, selbgcolor, selbgcolor },
+	[SchemeOut] = { outfgcolor, outbgcolor, outbgcolor },
+    [SchemeHighlight] = { hlfgcolor, hlbgcolor, hlbgcolor },
+    [SchemeHover] = { schemehoverfg, schemehoverbg, schemehoverbg },
     [SchemeGreen] = {"#ffffff", "#52E067", "#41b252"},
     [SchemeRed] = {"#ffffff", "#e05252", "#c24343"},
     [SchemeYellow] = {"#ffffff", "#e0c452", "#bca33f"},
-    [SchemeBlue] = {"#ffffff", "#5301e0", "#3a62b3"},
+    [SchemeBlue] = { schemebluefg, schemebluebg, schemebluebg },
     [SchemePurple] = {"#ffffff", "#9952e0", "#7439b0"},
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
@@ -38,6 +52,24 @@ static int animated = 0;
  * for example: " /?\"&[]"
  */
 static const char worddelimiters[] = " ";
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+	{ "color15", STRING, &normfgcolor },
+	{ "color0", STRING, &normbgcolor },
+	{ "color15",  STRING, &selfgcolor },
+	{ "color4",  STRING, &selbgcolor },
+	{ "color15",  STRING, &outfgcolor },
+	{ "color14",  STRING, &outbgcolor },
+	{ "foreground",  STRING, &hlfgcolor },
+	{ "background",  STRING, &hlbgcolor },
+	{ "foreground",  STRING, &schemehoverfg },
+	{ "color4",  STRING, &schemehoverbg },
+	{ "foreground",  STRING, &schemebluefg },
+	{ "color5",  STRING, &schemebluebg },
+};
 
 /* Size of the window border */
 static unsigned int border_width = 0;
