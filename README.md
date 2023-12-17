@@ -1,5 +1,8 @@
 # archdmenu
-My fork of dmenu [https://tools.suckless.org/dmenu]. It has implemented some of its plugins and some of my ideas.
+My fork of dmenu [https://tools.suckless.org/dmenu]. It has implemented some of its plugins and some of my ideas. 
+It can be displayed vertically and every item can have icons. Below you can see example: 
+
+![archdmenu screenshot](./figures/image.png)
 
 dmenu - dynamic menu
 ====================
